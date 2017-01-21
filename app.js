@@ -484,10 +484,11 @@ function sendLikeMessage(recipientId) {
     },
     message: {
       attachment: {
-        type: "image",
+        type: "text",
         payload: {
-            url: SERVER_URL + "/assets/like.png"
-        }
+	    text: "(y)",
+	    metadata: "DEVELOPER_DEFINED_METADATA"
+	}
       }
     }
   };
