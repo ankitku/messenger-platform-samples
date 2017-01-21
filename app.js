@@ -360,8 +360,7 @@ function sendLikeMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-            url: "https://scontent.xx.fbcdn.net/t39.1997-6/851557_369239266556155_759568595_n.png?_nc_ad=z-m",
-	    sticker_id: 369239263222822
+            url: SERVER_URL + "/assets/like.png"
         }
       }
     }
