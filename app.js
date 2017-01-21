@@ -326,10 +326,9 @@ function receivedMessage(event) {
 
     if (messageText) {
 	
-	  // We retrieve the user's current session, or create one if it doesn't exist
-          // This is needed for our bot to figure out the conversation history
-	   const sessionId = findOrCreateSession(sender);
-
+            // We retrieve the user's current session, or create one if it doesn't exist
+            // This is needed for our bot to figure out the conversation history
+            const sessionId = findOrCreateSession(senderID);
 
 	    // Let's forward the message to the Wit.ai Bot Engine
             // This will run all actions until our bot has nothing left to do
@@ -337,7 +336,7 @@ function receivedMessage(event) {
               sessionId, // the user's current session
               messageText, // the user's message
               sessions[sessionId].context // the user's current session state
-            ).then((context) => {
+              ).then((context) => {
               // Our bot did everything it has to do.
               // Now it's waiting for further messages to proceed.
               console.log('Waiting for next user messages');
