@@ -120,6 +120,14 @@ const actions = {
       return Promise.resolve()
     }
   },
+    getAge({sessionId}, {text}){
+      return new Promise(function(resolve, reject) {
+      context.age = Math.abs(new Date() - new Date("1988/04/30")),
+
+      return resolve(context);
+    });
+    }
+    
   // You should implement your custom actions here
   // See https://wit.ai/docs/quickstart
 };
@@ -130,6 +138,22 @@ const wit = new Wit({
   actions,
   logger: new log.Logger(log.INFO)
 });
+
+
+ /**
+ * Converts milliseconds to human readeable language separated by ":"
+ * Example: 190980000 --> 2:05:3 --> 2days 5hours 3min
+ 
+function get_my_age(){
+    var cd = 24 * 60 * 60 * 1000,
+        ch = 60 * 60 * 1000,
+        d = Math.floor(t / cd),
+	y = Math.floor(d / 365),
+	m = 12*(d/365-y),
+	return [y,m].join(':');
+}
+*/
+
 
 /*
  * Use your own validation token. Check that the token used in the Webhook 
