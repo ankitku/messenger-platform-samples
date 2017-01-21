@@ -1,3 +1,6 @@
 {
-
+    "appSecret": "cb62d9a24ff21f0e1f307690c73c5e80",
+    "pageAccessToken": "EAAWbPgcOgsoBAOlAqagBYSdf6QwJ2emrQJTt0Fkd2Sq5rRTWxoi526o2Qz4zZCz7NBI7pIWTslgncZARGcf8rBIVirOtZAZCZBkR6d8RAKZAmmuosv5vD2DvJ7ke6cDoAcEhrdHoA9uq5VaVMzAWqATdH97Cz0hDqCt0Lpzbb43gZDZD",
+    "validationToken": "lola",
+    "serverURL": "https://nktbot-webhook.herokuapp.com/"
 }
