@@ -124,10 +124,11 @@ const actions = {
       return new Promise(function(resolve, reject) {
 	  var diff = Math.abs(new Date() - new Date("1988/04/30"));
 	  var dm = 24*3600*1000;
-	  var y = dm*365
+	  var y = diff/dm*365
 	  var str = '';
-	  str += diff/y + " years ";
-	context.age = str;
+	  str += Math.floor(y) + " years and";
+	  str += Math.floor((y-Math.floor(y))*12) + " months ";
+	  context.age = str;
       return resolve(context);
     });
   },
