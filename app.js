@@ -423,7 +423,7 @@ function receivedAccountLink(event) {
  */
 
 function sendLikeMessage(recipientId) {
-      var messageData = {
+  var messageData = {
     recipient: {
       id: recipientId
     },
