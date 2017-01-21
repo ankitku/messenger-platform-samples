@@ -350,8 +350,6 @@ function receivedMessage(event) {
             .catch((err) => {
               console.error('Oops! Got an error from Wit: ', err.stack || err);
             })
-          }
-        } 
 	
     //sendTextMessage(senderID, messageText);
   } else if (messageAttachments) {
