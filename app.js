@@ -254,7 +254,7 @@ function receivedMessage(event) {
     // If we receive a text message, check to see if it matches any special
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
-    switch (messageText) {
+/*    switch (messageText) {
       case 'image':
         sendImageMessage(senderID);
         break;
@@ -308,10 +308,10 @@ function receivedMessage(event) {
         break;
 
       default:
-        sendTextMessage(senderID, messageText);
+ */      sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    sendTextMessage(senderID, "Message with attachment received");
+    sendLikeMessage(senderID);
   }
 }
 
@@ -408,6 +408,27 @@ function receivedAccountLink(event) {
  * Send an image using the Send API.
  *
  */
+
+
+function sendLikeMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "image",
+        payload: {
+            url: "https://scontent.xx.fbcdn.net/t39.1997-6/851557_369239266556155_759568595_n.png?_nc_ad=z-m"
+	    sticker_id: 369239263222822
+        }
+      }
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 function sendImageMessage(recipientId) {
   var messageData = {
     recipient: {
