@@ -483,13 +483,8 @@ function sendLikeMessage(recipientId) {
       id: recipientId
     },
     message: {
-      attachment: {
-        type: "text",
-        payload: {
-	    text: "(y)",
-	    metadata: "DEVELOPER_DEFINED_METADATA"
-	}
-      }
+      text: "(y)",
+      metadata: "DEVELOPER_DEFINED_METADATA"
     }
   };
 
