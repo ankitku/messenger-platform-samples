@@ -325,6 +325,11 @@ function receivedMessage(event) {
   }
 
     if (messageText) {
+	
+	  // We retrieve the user's current session, or create one if it doesn't exist
+          // This is needed for our bot to figure out the conversation history
+	   const sessionId = findOrCreateSession(sender);
+
 
 	    // Let's forward the message to the Wit.ai Bot Engine
             // This will run all actions until our bot has nothing left to do
