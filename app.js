@@ -17,12 +17,25 @@ const
   express = require('express'),
   https = require('https'),  
   request = require('request');
+  fetch = require('node-fetch');
 
 var app = express();
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
+
+
+let Wit = null;
+let log = null;
+try {
+  // if running from repo
+  Wit = require('../').Wit;
+  log = require('../').log;
+} catch (e) {
+  Wit = require('node-wit').Wit;
+  log = require('node-wit').log;
+}
 
 /*
  * Be sure to setup your config values before running this code. You can 
@@ -255,7 +268,7 @@ function receivedMessage(event) {
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
     switch (messageText) {
-      case 'image':
+/*    case 'image':
         sendImageMessage(senderID);
         break;
 
@@ -306,12 +319,12 @@ function receivedMessage(event) {
       case 'account linking':
         sendAccountLinking(senderID);
         break;
-
+*/
       default:
         sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    sendTextMessage(senderID, "Message with attachment received");
+    sendLikeMessage(senderID);
   }
 }
 
@@ -408,6 +421,26 @@ function receivedAccountLink(event) {
  * Send an image using the Send API.
  *
  */
+
+function sendLikeMessage(recipientId) {
+      var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "image",
+        payload: {
+            url: "https://scontent.xx.fbcdn.net/t39.1997-6/851557_369239266556155_759568595_n.png?_nc_ad=z-m",
+	    sticker_id : 369239263222822
+        }
+      }
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 function sendImageMessage(recipientId) {
   var messageData = {
     recipient: {
