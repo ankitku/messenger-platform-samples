@@ -29,6 +29,9 @@ try {
   log = require('node-wit').log;
 }
 
+const DEFAULT_MAX_STEPS = 10;
+const DEFAULT_WIT_URL = 'https://api.wit.ai';
+
 var app = express();
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
@@ -132,7 +135,17 @@ const actions = {
       return resolve(context);
     });
   },
-    
+  getOnomatopoeia({context, entities}) {
+      return new Promise(function(resolve, reject) {
+	  var onomatopoeia = ['moo ', 'gheuuu ', 'bork ', 'hiss ', 'hamba ', 'gudoob ', 'neiigghhh ', 'dhenchoo ', 'WOOF ', 'tok bok ', 'meeeowww ', 'meow ', 'purrrr '];
+	  var reps = [1,2,2,2,3,4];
+	  var c = reps[Math.floor(Math.random() * reps.length)];
+	  var word = onomatopoeia[Math.floor(Math.random() * onomatopoeia.length)];
+	  var str = new Array(c+1).join(word);
+	  context.ono = str;
+      return resolve(context);
+    });
+  },    
   // You should implement your custom actions here
   // See https://wit.ai/docs/quickstart
 };
